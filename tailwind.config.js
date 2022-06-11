@@ -8,12 +8,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        purple: {
+          50: '#D35EFF',
+        },
+        blue: {
+          50: '#5E97FF',
+        },
+        green: {
+          50: '#45FFAF',
+        },
         yellow: {
           50: '#ffd479;',
         },
         grey: {
           50: '#1c1e24',
           100: '#d0d5df',
+          200: '#282c34',
+          300: '#57637c',
         },
       },
       plugins: [],

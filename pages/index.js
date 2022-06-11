@@ -6,18 +6,18 @@ import TailwindIcon from '../components/tailwind.js'
 
 
 export default function Home() {
-  let iconColor = '#ffd479'
+  let iconColor = '#D35EFF'
 
   return (
-    <div className="flex flex-col items-center gap-12 pb-44 pt-16 md:flex-row-reverse md:gap-6 md:pt-20">
+    <div className="flex flex-col items-center gap-12 pb-44 pt-6 md:flex-row-reverse md:gap-6 md:pt-20">
       <div className="group relative flex h-40 w-40 items-center justify-center md:h-52 md:w-52 md:flex-1">
-        <div className="overflow-hidden drop-shadow-lg">
+        <div className="overflow-hidden drop-shadow-[10px_10px_0px_rgba(87,99,124,1)]">
           <Image
             src="/rossi.jpg"
             alt="Ross Woodhurst"
             width={250}
             height={250}
-            className="rounded-lg overflow-hidden"
+            className="overflow-hidden"
           />
           </div>
       </div>
@@ -26,13 +26,12 @@ export default function Home() {
         <h1 className="text-4xl font-extrabold">
           Hi, I&#39;m Ross
         </h1>
-        <p className="text-center leading-7 md:text-left">
-          A Freelance Web Developer from York, England. I work with <span className="underline underline-offset-4 decoration-yellow-50"><b>React</b></span> and <span className="underline underline-offset-4 decoration-yellow-50"><b>Next.js</b></span>.
-          I love to build things that make your life easier.
+        <p className="text-center font-bold leading-7 md:text-left">
+          A freelance web developer from York, England. I work with <span className="underline underline-offset-4 decoration-2 decoration-purple-50">React</span> and <span className="underline decoration-2 underline-offset-4 decoration-purple-50">Next.js</span> and strive to build things that make you a little bit better.
         </p>
 
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <p className="text-center leading-7 md:text-left"><b>🧰 Toolbox:</b></p>
+          <p className="text-center font-bold leading-7 md:text-left">Toolbox:</p>
           <div className="flex gap-4">
             <div className='w-8 h-8 rounded-lg overflow-hidden'>
               <JsIcon currentColor={iconColor}/>

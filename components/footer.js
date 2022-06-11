@@ -2,7 +2,7 @@ import React from 'react'
 
 function footer() {
 
-    let iconColor = '#ffd479'
+    let iconColor = '#57637c'
 
     const navigation = {
         main: [
