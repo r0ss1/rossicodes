@@ -1,5 +1,18 @@
-function Projects() {
-    return <div>Projects</div>
-  }
-  
-  export default Projects
+
+
+
+export default function Projects() {
+
+  return (
+    <div className="flex flex-col gap-12 pb-44 pt-6 md:gap-6 md:pt-20">
+      <div>
+      <h1 className="text-4xl font-extrabold">
+        Projects
+      </h1>
+      </div>
+      <div className="flex text-center md:text-lg font-bold mt-4 sm:mt-0">
+        {/* main content here */}
+      </div>
+  </div>
+  )
+}

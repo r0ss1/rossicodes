@@ -27,6 +27,9 @@ module.exports = {
           300: '#57637c',
         },
       },
+      variants: {
+        fill: ['hover', 'focus'], // this line does the trick
+      },
       plugins: [],
     }
   }

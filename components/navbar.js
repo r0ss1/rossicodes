@@ -9,7 +9,7 @@ function navbar() {
 
   return (
     <div className="w-11/12 md:gap-4 my-6 mx-auto px-6 sm:px-12 py-6 flex flex-col md:justify-start items-center sm:flex-row sm:justify-center">
-      <div className="flex-shrink-0 border border-4 border-grey-300 hover:border-grey-50 overflow-hidden rounded-full flex items-center">
+      <div className="flex-shrink-0 border border-4 border-grey-300 hover:border-purple-50 overflow-hidden rounded-full flex items-center">
       <Link href='/'>
             <Image
               className="lg:hidden"
