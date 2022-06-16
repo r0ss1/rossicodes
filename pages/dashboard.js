@@ -27,7 +27,7 @@ export default function Dashboard(props) {
       <div className='flex mb-4'>
       <GithubIcon iconColor={iconColor} /> <h3 className='font-bold'>Github Commits</h3>
       </div>
-      <p className='font-normal overflow:hidden md:text-sm mb-2'>This dashboard tracks the number of github commits I've made this year. Data from Github api.</p>    
+      <p className='font-normal overflow:hidden md:text-sm mb-2'>This dashboard tracks the number of github commits I&#39;ve made this year. Data from Github api.</p>    
       <Calendar data={contributionCalendar} />
       </div>
       </div>
