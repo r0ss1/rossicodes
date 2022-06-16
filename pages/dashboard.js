@@ -1,28 +1,51 @@
-import GitHubCalendar from 'react-github-calendar';
+import useSWR from 'swr';
+import { SWRConfig } from 'swr';
+import { getGithubUser } from '../lib/github';
+import Calendar from '../components/calendar';
+import GithubIcon from '../components/githubicon';
 
-export default function Dashboard() {
 
-  const myTheme = {
-    "level0": "#1c1e24",
-    "level1": "#498068",
-    "level2": "#228057",
-    "level3": "#45FFAE",
-    "level4": "#91FFCF"
-  }
+export default function Dashboard(props) {
+  const { data } = useSWR('/api/github');
+  const { fallback } = props;
+  console.log(JSON.stringify(data
+  ))
+
+  const contributionCalendar = data?.contributionsCollection?.contributionCalendar;
+  const iconColor = '#57637c'
+
 
   return (
+    <SWRConfig value={{ fallback }}>
     <div className="flex flex-col gap-12 pb-44 pt-6 md:gap-6 md:pt-20">
       <div>
       <h1 className="text-4xl font-extrabold">
           Dashboard
       </h1>
       </div>
-      <div className="flex text-center md:text-lg font-bold mt-4 sm:mt-0">
-      <GitHubCalendar username="r0ss1"
-        color='#45FFAF'
-        theme={myTheme} />
+      <div className="flex flex-col text-left md:text-lg font-bold mt-4 sm:mt-0">
+      <div className='flex mb-4'>
+      <GithubIcon iconColor={iconColor} /> <h3 className='font-bold'>Github Commits</h3>
       </div>
-  </div>
+      <p className='font-normal overflow:hidden md:text-sm mb-2'>This dashboard tracks the number of github commits I've made this year. Data from Github api.</p>    
+      <Calendar data={contributionCalendar} />
+      </div>
+      </div>
+      </SWRConfig>
   )
 }
+
+export async function getStaticProps() {
+  const githubUser = await getGithubUser();
+
+  return {
+    props: {
+      fallback: {
+        '/api/github': githubUser.data,
+      },
+    },
+    revalidate: 1,
+  };
+}
+
   

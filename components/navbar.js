@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image';
-import { TbLayoutDashboard, TbBookmarks } from 'react-icons/tb';
-import { FaHardHat, FaLaptopCode } from 'react-icons/fa';
+import DashboardIcon from './dashboardicon'
+import ProjectIcon from './projectsicon';
+import BookmarkIcon from './bookmarksicon';
+import CodeIcon from './codeicon';
+
 
 function navbar() {
 
@@ -22,26 +25,10 @@ function navbar() {
       </Link>
         </div>
         <div className="flex text-center md:text-lg font-bold mt-4 sm:mt-0">
-            <Link href='/dashboard'>
-            <a className="flex items-center p-2 rounded-lg hover:bg-grey-50">
-            <TbLayoutDashboard stroke={iconColor}/> <p className='px-2 hidden md:block'>Dashboard</p>
-            </a>
-            </Link>
-            <Link href='/projects'>
-            <a className="flex items-center p-2 rounded-lg hover:bg-grey-50">
-            <FaHardHat fill={iconColor}/> <p className='px-2 hidden md:block'>Projects</p>
-            </a>
-            </Link>
-            <Link href='/bookmarks'>
-            <a className="flex items-center p-2 rounded-lg hover:bg-grey-50">
-            <TbBookmarks stroke={iconColor}/> <p className='px-2 hidden md:block'>Bookmarks</p>
-            </a>
-            </Link>
-            <Link href='/code'>
-            <a className="flex items-center p-2 rounded-lg hover:bg-grey-50">
-            <FaLaptopCode fill={iconColor}/> <p className='px-2 hidden md:block'>Code</p>
-            </a>
-            </Link>
+            <DashboardIcon iconColor={iconColor} />
+            <ProjectIcon iconColor={iconColor} />
+            <BookmarkIcon iconColor={iconColor} />
+            <CodeIcon iconColor={iconColor} />
         </div>
     </div>
   )
