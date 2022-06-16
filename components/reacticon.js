@@ -6,4 +6,6 @@
     </g>
   </svg>
   )
+
+  ReactIcon.displayName = "ReactIcon"
   export default ReactIcon

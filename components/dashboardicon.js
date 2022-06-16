@@ -18,4 +18,5 @@ const DashboardIcon = (props) => {
     )
 }
 
+DashboardIcon.displayName = "DashboardIcon"
 export default DashboardIcon

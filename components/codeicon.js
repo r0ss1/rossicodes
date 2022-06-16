@@ -17,4 +17,5 @@ const CodeIcon = (props) => {
     )
 }
 
+CodeIcon.displayName = "CodeIcon"
 export default CodeIcon

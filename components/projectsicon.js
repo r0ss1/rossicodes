@@ -17,4 +17,5 @@ const ProjectIcon = (props) => {
     )
 }
 
+ProjectIcon.displayName = "ProjectIcon"
 export default ProjectIcon

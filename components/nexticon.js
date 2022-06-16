@@ -6,5 +6,6 @@ const NextIcon = (props) => (
     ></path>
   </svg>
 );
-  
+
+NextIcon.displayName = "NextIcon"
 export default NextIcon

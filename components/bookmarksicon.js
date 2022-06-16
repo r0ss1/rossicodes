@@ -17,4 +17,5 @@ const BookmarkIcon = (props) => {
     )
 }
 
+BookmarkIcon.displayName = "BookmarkIcon"
 export default BookmarkIcon
