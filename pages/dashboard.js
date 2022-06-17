@@ -1,19 +1,32 @@
 import useSWR from 'swr';
+import React, { useState, useEffect } from 'react';
 import { SWRConfig } from 'swr';
 import { getGithubUser } from '../lib/github';
 import Calendar from '../components/calendar';
 import GithubIcon from '../components/githubicon';
-
-
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+ 
 export default function Dashboard(props) {
   const { data } = useSWR('/api/github');
+  const [healthData, setHealthData] = useState(null)
   const { fallback } = props;
-  console.log(JSON.stringify(data
-  ))
+  const [isLoading, setLoading] = useState(false)
 
   const contributionCalendar = data?.contributionsCollection?.contributionCalendar;
   const iconColor = '#57637c'
 
+  useEffect(() => {
+    setLoading(true)
+    fetch('api/health-data')
+      .then((res) => res.json())
+      .then((data) => {
+        setHealthData(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!data) return <p>No profile data</p>
 
   return (
     <SWRConfig value={{ fallback }}>
@@ -31,11 +44,15 @@ export default function Dashboard(props) {
       <Calendar data={contributionCalendar} />
       </div>
       </div>
+      <div>
+      <p className='font-normal overflow:hidden md:text-sm mb-2'>{healthData[1].data[0].qty}</p>
+      </div>
       </SWRConfig>
   )
 }
 
 export async function getStaticProps() {
+
   const githubUser = await getGithubUser();
 
   return {
