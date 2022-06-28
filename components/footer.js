@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 function footer() {
 
@@ -60,7 +61,9 @@ function footer() {
                         </a>
                     ))}
                 </div>
-                <p className="mt-8 text-center">Made by Ross Woodhurst</p>
+                <Link href="https://twitter.com/rossicodes">
+                <p className='mt-8 text-center cursor-pointer'><a>Made by rossicodes</a></p>
+                 </Link>
             </div>
         </footer>
     )
