@@ -5,7 +5,7 @@ import { getGithubUser } from '../lib/github';
 import Calendar from '../components/calendar';
 import GithubIcon from '../components/githubicon';
 import AppleIcon from '../components/appleicon';
-import FootstepsIcon from '../components/footstepsIcon';
+import FootstepsIcon from '../components/footstepsicon';
 import CaloriesIcon from '../components/caloriesicon';
 import MapIcon from '../components/mapicon';
 import GymIcon from '../components/gymIcon';
