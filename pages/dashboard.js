@@ -64,6 +64,7 @@ export default function Dashboard(props) {
 
   return (
     <SWRConfig value={{ fallback }}>
+      {console.log(data)}
     <div className="flex flex-col gap-12 mb-10 pt-6 md:gap-6 md:pt-20">
       <div>
       <h1 className="text-4xl font-extrabold">
