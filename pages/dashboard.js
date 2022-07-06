@@ -13,6 +13,7 @@ import CarbsIcon from '../components/carbsicon';
 import ProteinIcon from '../components/proteinicon';
 import FatIcon from '../components/faticon';
 import FitnessIcon from '../components/fitnessicon';
+import { motion } from 'framer-motion';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
  
@@ -43,6 +44,7 @@ export default function Dashboard(props) {
     fetch('api/health-data')
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         setKcals(parseInt(data.kcals))
         setSteps(parseInt(data.steps))
         setDistance(parseInt(data.distance))
@@ -56,8 +58,8 @@ export default function Dashboard(props) {
       })
   }, [])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No github data</p>
+  if (isLoading) return <h1 className="text-4xl font-extrabold">Loading...</h1>
+  if (!data) return <h2 className="text-xl font-extrabold">No data from Github</h2>
 
 
   return (
@@ -69,7 +71,7 @@ export default function Dashboard(props) {
       </h1>
       </div>
       <div className="flex flex-col text-left md:text-lg font-bold mt-4 sm:mt-0">
-      <div className='flex'>
+      <div className='flex mb-4'>
         <GithubIcon iconColor={iconColor} /> <h3 className='font-bold'>Code</h3> 
       </div> 
           <Calendar data={contributionCalendar} />
@@ -78,8 +80,16 @@ export default function Dashboard(props) {
 
       <div>
 
-
-        <div className='mt-4 mb-10'>
+    <motion.div
+    className='mt-4 mb-10'
+    initial={{ scale: 0.5 }}
+    animate={{ scale: 1 }}
+    transition={{
+      type: "spring",
+      stiffness: 230,
+      damping: 20
+    }}
+        >
         <div className='flex mb-4 text-left md:text-lg font-bold mt-4 sm:mt-0'>
           <CaloriesIcon iconColor={iconColor} /> <h3 className='font-bold'>Diet</h3> 
       </div>
@@ -124,9 +134,18 @@ export default function Dashboard(props) {
             <div className="bg-green-50 h-1 w-90%"></div>
             </div>
           </div>
-          </div>
+      </motion.div>
 
-        <div className='mt-4 mb-10'>
+      <motion.div
+    className='mt-4 mb-10'
+    initial={{ scale: 0.5 }}
+    animate={{ scale: 1 }}
+    transition={{
+      type: "spring",
+      stiffness: 230,
+      damping: 20
+    }}
+        >
         <div className='flex mb-4 text-left md:text-lg font-bold mt-4 sm:mt-0'>
           <FitnessIcon iconColor={iconColor} /> <h3 className='font-bold'>Fitness</h3> 
       </div>  
@@ -172,7 +191,7 @@ export default function Dashboard(props) {
             <div className="bg-purple-50 h-1 w-90%"></div>
             </div>
           </div>
-        </div>
+        </motion.div>
     </div>
 
 

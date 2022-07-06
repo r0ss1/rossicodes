@@ -24,7 +24,7 @@ export default function Home() {
 
       <div className="mx-10 md:mx-2 flex flex-[2] flex-col items-center gap-4 md:items-start">
         <h1 className="text-4xl font-extrabold">
-          Hi, I&#39;m Rossicodes
+          Hi, I&#39;m Ross
         </h1>
         <p className="text-center font-bold leading-7 md:text-left">
           A freelance web developer from York, England. I work with <span className="underline underline-offset-4 decoration-2 decoration-green-50">React</span> and <span className="underline decoration-2 underline-offset-4 decoration-green-50">Next.js</span> and strive to build things that make you a little bit better.
