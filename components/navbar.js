@@ -6,13 +6,14 @@ import BookmarkIcon from './bookmarksicon';
 import CodeIcon from './codeicon';
 import { useTheme } from 'next-themes'
 import { MoonIcon, SunIcon } from '@heroicons/react/solid'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import { FaHome } from 'react-icons/fa'
 
 
-function navbar() {
+function Navbar() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const iconColor = '#232b2b'
+  const iconColor = theme == 'dark' ? 'pitch' : 'gray'
 
   useEffect(() => {
     setMounted(true)
@@ -33,11 +34,10 @@ function navbar() {
   }
 
   return (
-    <div className="w-11/12 md:gap-4 my-6 px-6 sm:px-12 py-6 flex sm:flex-col md:flex-row items-center">
-      <div className="flex-shrink-0 border border-4 border-grey-300 hover:border-pink overflow-hidden rounded-full flex items-center">
+    <div className="w-11/12 md:gap-4 my-6 px-6 sm:px-12 py-6 flex flex-col md:flex-row items-center">
+      <div className="invisible md:visible flex-shrink-0 border border-4 border-grey-300 hover:border-pink overflow-hidden rounded-full flex items-center">
       <Link href='/'>
-            <Image
-              className="lg:hidden"
+          <Image
               src='/rossi.jpg' 
               alt="Rossi"
               width={50}
@@ -46,15 +46,20 @@ function navbar() {
           />
       </Link>
         </div>
-        <div className="flex text-center md:text-lg font-bold mt-4 sm:mt-0">
+      <div className="flex flex-row text-center md:text-lg font-bold mt-4 sm:mt-0">
+        <div className='visible md:invisible mr-2'> 
+        <Link href='/'>
+            <FaHome />
+          </Link>
+          </div>   
             <DashboardIcon iconColor={iconColor} />
             <ProjectIcon iconColor={iconColor} />
             <BookmarkIcon iconColor={iconColor} />
             <CodeIcon iconColor={iconColor} />
       </div>
-      <div className='flex ml-auto md:text-lg font-bold mt-4 sm:mt-0'>{renderThemeChanger()}</div>
+      <div className='md:ml-auto sm:mt-0 mt-4'>{renderThemeChanger()}</div>
     </div>
   )
 }
 
-export default navbar
+export default Navbar

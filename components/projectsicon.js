@@ -6,7 +6,7 @@ const ProjectIcon = (props) => {
     const LinkComponent = React.forwardRef(function projectIcon({ onClick, href }, ref) {
         return (
         <a href={href} onClick={onClick} ref={ref} className="flex sm:px-2 lg:px-0">
-        <FaHardHat fill={props.iconColor} className="my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Projects</p>
+        <FaHardHat stroke={props.iconColor} className="mr-2 md:mr-0 my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Projects</p>
         </a>
     )
     })

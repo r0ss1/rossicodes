@@ -7,7 +7,7 @@ const DashboardIcon = (props) => {
     const LinkComponent = React.forwardRef(function dashboardIcon({ onClick, href }, ref) {
         return (
         <a href={href} onClick={onClick} ref={ref} className="flex">
-        <TbLayoutDashboard stroke={props.iconColor} className="my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Dashboard</p>
+        <TbLayoutDashboard fill={props.iconColor} className="mr-2 md:mr-0 my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Dashboard</p>
         </a>
     )   
     })

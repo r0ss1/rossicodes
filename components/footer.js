@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 function footer() {
-
-    let iconColor = '#232b2b'
+    const { theme, setTheme } = useTheme()
+    const iconColor = theme == 'dark' ? '#e3e4e6' : '#f000ff'
+    const itemClass = `h-6 w-6 fill-${iconColor} hover:fill-pink" aria-hidden="true`
 
     const navigation = {
         main: [
@@ -57,7 +59,7 @@ function footer() {
                     {navigation.social.map((item) => (
                         <a key={item.name} href={item.href} className="hover:fill-pink">
                             <span className="sr-only">{item.name}</span>
-                            <item.icon className="h-6 w-6 hover:fill-pink" aria-hidden="true" />
+                            <item.icon className={itemClass}/>
                         </a>
                     ))}
                 </div>
