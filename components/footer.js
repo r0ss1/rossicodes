@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
-function footer() {
+function Footer() {
     const { theme, setTheme } = useTheme()
     const iconColor = theme == 'dark' ? '#e3e4e6' : '#f000ff'
     const itemClass = `h-6 w-6 fill-${iconColor} hover:fill-pink" aria-hidden="true`
@@ -53,7 +53,7 @@ function footer() {
     }
 
     return (
-        <footer className="">
+        <Footer className="">
             <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
                 <div className="mt-8 flex justify-center space-x-6">
                     {navigation.social.map((item) => (
@@ -67,8 +67,8 @@ function footer() {
                 <p className='hover:text-pink mt-8 text-center cursor-pointer'><a>Made by rossicodes</a></p>
                  </Link>
             </div>
-        </footer>
+        </Footer>
     )
 }
 
-export default footer
+export default Footer
