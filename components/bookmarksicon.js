@@ -6,7 +6,7 @@ const BookmarkIcon = (props) => {
     const LinkComponent = React.forwardRef(function bookmarkIcon({ onClick, href }, ref) {
         return (
         <a href={href} onClick={onClick} ref={ref} className="flex sm:px-2 lg:px-0">
-        <TbBookmarks stroke={props.iconColor} className="my-auto"/> <p className='px-2 hidden md:block'>Bookmarks</p>
+        <TbBookmarks stroke={props.iconColor} className="my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Bookmarks</p>
         </a>
     )
     })

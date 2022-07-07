@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import { ThemeProvider } from 'next-themes'
 import Layout from '../components/layout'
 import { SWRConfig } from 'swr';
 import fetcher from '../lib/fetcher';
@@ -8,6 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 function MyApp({ Component, pageProps }) {
   
   return (
+    <ThemeProvider attribute="class">
     <SWRConfig value={{ fetcher }}>
           <Head>
           <meta
@@ -19,7 +21,8 @@ function MyApp({ Component, pageProps }) {
     <Layout>
       <Component {...pageProps} />
       </Layout>
-    </SWRConfig>
+      </SWRConfig>
+      </ThemeProvider>
   )
 }
 

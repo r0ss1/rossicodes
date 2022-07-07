@@ -7,8 +7,7 @@ const ProteinIcon = (props) => {
 
     return (
   
-        <GiSteak size={28} stroke={props.iconColor} className="mr-0"/>
-
+        <GiSteak size={28} fill={props.theme == 'dark' ? '#0e1111' : '#e3e4e6'} className="mr-0"/>
     )
 }
 

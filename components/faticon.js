@@ -6,9 +6,7 @@ const FatIcon = (props) => {
 
 
     return (
-  
-        <GiAvocado size={28} stroke={props.iconColor} className="mr-0"/>
-
+        <GiAvocado size={28} className="mr-0 " fill={props.theme == 'dark' ? '#0e1111' : '#e3e4e6'}/>
     )
 }
 

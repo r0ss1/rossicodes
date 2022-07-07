@@ -3,21 +3,37 @@ import JsIcon from '../components/jsicon.js'
 import ReactIcon from '../components/reacticon.js'
 import NextIcon from '../components/nexticon'
 import TailwindIcon from '../components/tailwind.js' 
+import { useTheme } from 'next-themes'
+import {MoonIcon, SunIcon} from '@heroicons/react/solid'
 
 
 export default function Home() {
-  let iconColor = '#D35EFF'
+  const { systemTheme, theme, setTheme } = useTheme()
+
+  const renderThemeChanger = () => {
+    const currentTheme = theme == 'system' ? 'systemTheme' : theme
+
+    if (currentTheme == 'dark') {
+      return (
+        <SunIcon className="w-7 h-7" role='button' onClick={()=> setTheme('light')} />)
+    } else {
+      return (
+        <MoonIcon className="w-7 h-7" role='button' onClick={()=> setTheme('dark')} />)
+      }
+  }
+
+  let iconColor = '#f000ff'
 
   return (
     <div className="flex flex-col items-center gap-12 pb-44 pt-6 md:flex-row-reverse md:gap-6 md:pt-20">
       <div className="group relative flex h-40 w-40 items-center justify-center md:h-52 md:w-52 md:flex-1">
-        <div className="overflow-hidden drop-shadow-[10px_10px_0px_rgba(87,99,124,1)]">
+        <div className="overflow-hidden rounded drop-shadow-[10px_10px_0px_rgba(35,43,43,1)]">
           <Image
             src="/rossi.jpg"
             alt="Rossicodes"
             width={250}
             height={250}
-            className="overflow-hidden"
+            className="rounded"
           />
           </div>
       </div>
@@ -27,7 +43,7 @@ export default function Home() {
           Hi, I&#39;m Ross
         </h1>
         <p className="text-center font-bold leading-7 md:text-left">
-          A freelance web developer from York, England. I work with <span className="underline underline-offset-4 decoration-2 decoration-green-50">React</span> and <span className="underline decoration-2 underline-offset-4 decoration-green-50">Next.js</span> and strive to build things that make you a little bit better.
+          A freelance web developer from York, England. I work with <span className="underline underline-offset-4 decoration-2 decoration-pink">React</span> and <span className="underline decoration-2 underline-offset-4 decoration-pink">Next.js</span> and strive to build things that make you a little bit better.
         </p>
 
         <div className="flex flex-col items-center gap-4 md:items-start">

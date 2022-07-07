@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes'
 
 import clsx from 'clsx';
 
 export default function Calendar(props) {
-    const { data } = props;
-    const iconColor = '#57637c'
+  const { data } = props;
+  const { theme, setTheme } = useTheme()
+  const iconColor = '#57637c'
 
   const [selectContribution, setSelectContribution] = useState({ count: null, date: null });
 
@@ -32,7 +34,7 @@ export default function Calendar(props) {
   return (
     <>
       <div className="relative flex flex-col">
-        <ul className="flex justify-end gap-[3px] overflow-hidden text-xs dark:text-zinc-400 md:justify-start">
+        <ul className="flex pb-2 justify-end gap-[3px] overflow-hidden text-xs dark:text-gray md:justify-start">
           {months.map((month) => (
             <li
               key={month.firstDay}
@@ -61,7 +63,7 @@ export default function Calendar(props) {
                       translateY: 0,
                       transition: { delay: getRandomDelayAnimate },
                     }}
-                    className="my-[2px] block h-[10px] w-[10px] rounded-sm bg-grey-50"
+                    className="my-[2px] block h-[10px] w-[10px] rounded-sm dark:bg-pitch bg-gray"
                     style={{ backgroundColor }}
                     onMouseEnter={() =>
                       setSelectContribution({
@@ -78,11 +80,11 @@ export default function Calendar(props) {
         </div>
       </div>
 
-      <div className="pt-4 flex flex-wrap items-center justify-between gap-2">
+      <div className="pt-2 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-sm">
-          <span className="dark:text-zinc-400">Less</span>
+          <span className="dark:text-gray">Less</span>
           <ul className="flex gap-1">
-            <motion.li className="h-[10px] w-[10px] rounded-sm bg-zinc-300 dark:bg-zinc-800" />
+            <motion.li className="h-[10px] w-[10px] rounded-sm bg-gray dark:bg-pitch" />
             {contributionColors.map((color, colorIndex) => (
               <motion.li
                 key={color}
@@ -102,7 +104,7 @@ export default function Calendar(props) {
         <div
           className={clsx(
             `${selectContribution.date ? 'opacity-100' : 'opacity-0'}`,
-            'rounded bg-zinc-200 px-2 text-sm dark:bg-zinc-800'
+            'rounded bg-gray px-2 text-sm dark:bg-pitch'
           )}
         >
           {selectContribution.count} contributions on {selectContribution.date}

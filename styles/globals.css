@@ -4,15 +4,12 @@
 
 html,
 body {
-  background-color: #282c34;
-  color: #ebf0ff;
   padding: 0;
   margin: 0;
   font-family: SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica;
 }
 
 a {
-  color: #fff;
   text-decoration: none;
 }
 

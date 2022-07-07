@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function footer() {
 
-    let iconColor = '#57637c'
+    let iconColor = '#232b2b'
 
     const navigation = {
         main: [
@@ -55,14 +55,14 @@ function footer() {
             <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
                 <div className="mt-8 flex justify-center space-x-6">
                     {navigation.social.map((item) => (
-                        <a key={item.name} href={item.href} className="hover:fill-purple-50">
+                        <a key={item.name} href={item.href} className="hover:fill-pink">
                             <span className="sr-only">{item.name}</span>
-                            <item.icon className="h-6 w-6 hover:fill-purple-50" aria-hidden="true" />
+                            <item.icon className="h-6 w-6 hover:fill-pink" aria-hidden="true" />
                         </a>
                     ))}
                 </div>
                 <Link href="https://twitter.com/rossicodes">
-                <p className='mt-8 text-center cursor-pointer'><a>Made by rossicodes</a></p>
+                <p className='hover:text-pink mt-8 text-center cursor-pointer'><a>Made by rossicodes</a></p>
                  </Link>
             </div>
         </footer>

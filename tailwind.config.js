@@ -1,6 +1,7 @@
 // tailwind.config.js
 
 module.exports = {
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
+        '0%': '0%',
         '10%': '10%',
         '20%': '20%',
         '30%': '30%',
@@ -20,24 +22,14 @@ module.exports = {
         '100%': '100%',
       },
       colors: {
-        purple: {
-          50: '#D35EFF',
-        },
-        blue: {
-          50: '#5E97FF',
-        },
-        green: {
-          50: '#45FFAF',
-        },
-        yellow: {
-          50: '#ffd479;',
-        },
-        grey: {
-          50: '#1c1e24',
-          100: '#d0d5df',
-          200: '#282c34',
-          300: '#57637c',
-        },
+        transparent: 'transparent',
+        current: 'currentColor',
+        'white': '#f9f9f9',
+        'black': '#232b2b',
+        'green': '#10b981',
+        'pink': '#f000ff',
+        'gray': '#e3e4e6',
+        'pitch': '#0e1111',
       },
       variants: {
         fill: ['hover', 'focus'], // this line does the trick

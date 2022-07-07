@@ -4,7 +4,6 @@ import { SWRConfig } from 'swr';
 import { getGithubUser } from '../lib/github';
 import Calendar from '../components/calendar';
 import GithubIcon from '../components/githubicon';
-import AppleIcon from '../components/appleicon';
 import FootstepsIcon from '../components/footstepsicon';
 import CaloriesIcon from '../components/caloriesicon';
 import MapIcon from '../components/mapicon';
@@ -14,6 +13,7 @@ import ProteinIcon from '../components/proteinicon';
 import FatIcon from '../components/faticon';
 import FitnessIcon from '../components/fitnessicon';
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes'
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
  
@@ -30,10 +30,19 @@ export default function Dashboard(props) {
   const [fat, setFat] = useState(0)
   const [workout, setWorkout] = useState([])
   const [timestamp, setTimestamp] = useState()
+  const [fitnessGoals, setFitnessGoals] = useState(0)
+  const [kcalsConsumed, setKcalsConsumed] = useState(0)
+  const [goalPercent, setGoalPercent] = useState(10)
+  const { theme, setTheme } = useTheme()
 
 
   const contributionCalendar = data?.contributionsCollection?.contributionCalendar;
-  const iconColor = '#57637c'
+  const iconColor = theme == 'dark' ? 'pitch' : 'gray'
+
+  function percentage(partialValue, totalValue) {
+    let consumed = (100 * partialValue) / totalValue
+    return Math.ceil(consumed / 10) * 10
+  }
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -55,11 +64,32 @@ export default function Dashboard(props) {
         setWorkout(parseInt(data.workout))
         setTimestamp(parseInt(data.timestamp))
         setLoading(false)
-      })
+        let n = 0;
+        if (data?.workout?.length) { setFitnessGoals(fitnessGoals + 1)}
+        if (data?.steps > 10000) { setFitnessGoals(fitnessGoals + 1)}
+        if (data?.kcals) { setKcalsConsumed(percentage(data.kcals, 1800)) }
+        if (fitnessGoals == 1) {
+          setGoalPercent(50)
+        } else if (fitnessGoals == 2) {
+          setGoalPercent(100)
+        }
+      }
+    )
   }, [])
 
-  if (isLoading) return <h1 className="text-4xl font-extrabold">Loading...</h1>
-  if (!data) return <h2 className="text-xl font-extrabold">No data from Github</h2>
+  if (isLoading) return (
+  <div className="flex flex-col gap-12 mb-10 pt-6 md:gap-6 md:pt-20">
+    <h1 className="text-4xl font-extrabold">
+      Loading...
+    </h1>
+  </div>
+    )
+  if (!data) return (
+  <div className="flex flex-col gap-12 mb-10 pt-6 md:gap-6 md:pt-20">
+    <h1 className="text-4xl font-extrabold">
+    No data
+    </h1>
+</div>)
 
 
   return (
@@ -96,43 +126,45 @@ export default function Dashboard(props) {
       </div>
         <div className="flex flex-wrap">  
         <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray dark:bg-pitch relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Fat</h5>
                   <span className="font-semibold text-xl">{fat ? fat : 0}</span> g</div>
-                <div className="relative w-auto pl-4 flex-initial"><div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-50"><FatIcon iconColor={iconColor} /></div>
+                <div className="relative w-auto pl-4 flex-initial"><div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-black"><FatIcon iconColor={iconColor} theme={theme} /></div>
                 </div>
               </div>
-                <p className="text-sm text-blueGray-400 mt-4"><span className="text-emerald-500">3.48% </span><span className="whitespace-nowrap"> / 142g limit</span></p>
+                <p className="text-sm mt-4"><span className="text-green">3.48% </span><span className="whitespace-nowrap"> / 142g limit</span></p>
               </div>
             </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray dark:bg-pitch relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Carbs</h5><span className="font-semibold text-xl">{carbs ? carbs : 0}</span> g</div>
                 <div className="relative w-auto pl-4 flex-initial">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-green-50"><CarbsIcon iconColor={iconColor} /></div></div>
-              </div><p className="text-sm mt-4"><span className="text-red-500">3.48% </span><span className="whitespace-nowrap"> / 27g limit</span></p></div>
+                    <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-black"><CarbsIcon iconColor={iconColor} theme={theme} /></div>
+                </div>
+              </div><p className="text-sm mt-4"><span className="text-pink">3.48% </span><span className="whitespace-nowrap"> / 27g limit</span></p></div>
               </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray dark:bg-pitch relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Protein</h5><span className="font-semibold text-xl">{protein ? protein : 0}</span> g</div>
-                <div className="relative w-auto pl-4 flex-initial">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-purple-50"><ProteinIcon iconColor={iconColor} /></div></div>
-              </div><p className="text-sm text-blueGray-400 mt-4"><span className="text-red-500">3.48% </span><span className="whitespace-nowrap"> / 128g target</span></p></div>
+              <div className="relative w-auto pl-4 flex-initial">
+                    <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-black"><ProteinIcon iconColor={iconColor} theme={theme} /></div>
+              </div>
+              </div><p className="text-sm text-gray mt-4"><span className="text-pink">3.48% </span><span className="whitespace-nowrap"> / 128g target</span></p></div>
               </div>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-sm"><span className='text-green-50'>{kcals}</span> / 1900 kcals</p> 
-          <div className="m-auto w-full bg-grey-50 h-1">
-            <div className="bg-green-50 h-1 w-90%"></div>
+            <p className="mb-2 text-sm"><span className='text-green'>{kcals}</span> / 1800 kcals</p> 
+          <div className="m-auto w-full bg-gray h-1">
+              <div className={`bg-green h-1 w-${kcalsConsumed}%`}></div>
             </div>
           </div>
       </motion.div>
@@ -152,44 +184,46 @@ export default function Dashboard(props) {
       </div>  
         <div className="flex flex-wrap">
           <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Steps</h5><span className="font-semibold text-xl">{steps ? steps : 0}</span></div>
                 <div className="relative w-auto pl-4 flex-initial">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-50"><FootstepsIcon iconColor={iconColor} /></div></div>
-              </div><p className="text-sm text-blueGray-400 mt-4"><span className="text-red-500">3.48% </span><span className="whitespace-nowrap">/ 10000 target</span></p></div>
+                    <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-black"><FootstepsIcon iconColor={iconColor} theme={theme} /></div>
+                  </div>
+              </div><p className="text-sm mt-4"><span className="text-pink">3.48% </span><span className="whitespace-nowrap">/ 10000 target</span></p></div>
               </div>
             </div>
           <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="text-blueGray-400 uppercase font-bold text-xs">Workout</h5>
                   <span className="font-semibold text-xl text-blueGray-700">{ workout.length ? "Yes" : "No" }</span></div>
                 <div className="relative w-auto pl-4 flex-initial">
-                <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-purple-50 "><GymIcon iconColor={iconColor} /></div>
+                <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-black"><GymIcon iconColor={iconColor} theme={theme}/></div>
                 </div></div><p className="text-sm text-blueGray-400 mt-4">
-                  <span className="text-emerald-500 mr-2"><i className="fas fa-arrow-up"></i> 12%</span>
+                  <span className="text-green mr-2"><i className="fas fa-arrow-up"></i> 12%</span>
                   <span className="whitespace-nowrap">3x per wk</span></p></div>
             </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gray relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4">
                 <div className="flex flex-wrap">
                   <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
-                    <h5 className="text-blueGray-400 uppercase font-bold text-xs">Distance</h5>
+                    <h5 className="uppercase font-bold text-xs">Distance</h5>
                     <span className="font-semibold text-xl text-blueGray-700">{distance ? distance : 0} mi</span></div>
                   <div className="relative w-auto pl-4 flex-initial">
-                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-green-50 "><MapIcon iconColor={iconColor} /></div></div></div><p className="text-sm text-blueGray-400 mt-4"><span className="text-orange-500 mr-2"><i className="fas fa-arrow-down"></i> 1.10%</span><span className="whitespace-nowrap">/ 6 mi</span></p></div>
+                      <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-black"><MapIcon iconColor={iconColor} theme={theme} /></div>
+                    </div></div><p className="text-sm text-blueGray-400 mt-4"><span className="text-pink mr-2"><i className="fas fa-arrow-down"></i> 1.10%</span><span className="whitespace-nowrap">/ 6 mi</span></p></div>
               </div>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-sm"><span className='text-purple-50'>1</span> / 2 fitness goals</p> 
-          <div className="m-auto w-full bg-grey-50 h-1">
-            <div className="bg-purple-50 h-1 w-90%"></div>
+            <p className="mb-2 text-sm"><span className='text-pink'>{fitnessGoals}</span> / 2 fitness goals</p> 
+          <div className="m-auto w-full bg-gray h-1">
+            <div className={`bg-pink h-1 w-${goalPercent}%`}></div>
             </div>
           </div>
         </motion.div>
