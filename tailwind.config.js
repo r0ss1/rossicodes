@@ -1,6 +1,10 @@
 // tailwind.config.js
 
 module.exports = {
+  linearBorderGradients: ({theme }) => ({
+    colors: {
+    },
+    }),
   darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +12,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        gotham: 'linear-gradient(to top, rgb(55, 65, 81), rgb(17, 24, 39), rgb(0, 0, 0))',
+        pinkcity: 'linear-gradient(to bottom, rgb(244 63 94), rgb(253 164 175))',
+        
+      },
       width: {
         '0%': '0%',
         '10%': '10%',
@@ -26,15 +35,23 @@ module.exports = {
         current: 'currentColor',
         'white': '#f9f9f9',
         'black': '#232b2b',
-        'green': '#10b981',
-        'pink': '#f000ff',
+        'green': '#03FDD2',
+        'pink': '#fb7185',
         'gray': '#e3e4e6',
         'pitch': '#0e1111',
+        'blue': '#30B8E1',
+        'purple': '#8443FF',
+        'darkgray': '#374151',
+        'darkblack': '#111827',
+        'pitchblack': '#000000',
+
       },
       variants: {
         fill: ['hover', 'focus'], // this line does the trick
       },
-      plugins: [],
+      plugins: [
+        require('tailwindcss-border-gradient-radius'),
+      ],
     }
   }
 }

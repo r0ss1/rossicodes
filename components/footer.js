@@ -53,7 +53,7 @@ function Footer() {
     }
 
     return (
-        <footer className="">
+        <footer className="bg-transparent">
             <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
                 <div className="mt-8 flex justify-center space-x-6">
                     {navigation.social.map((item) => (
@@ -64,7 +64,7 @@ function Footer() {
                     ))}
                 </div>
                 <Link href="https://twitter.com/rossicodes">
-                <p className='hover:text-pink mt-8 text-center cursor-pointer'><a>Made by rossicodes</a></p>
+                <p className='hover:text-pink mt-8 text-center cursor-pointer'><a>by rossicodes</a></p>
                  </Link>
             </div>
         </footer>

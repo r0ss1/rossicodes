@@ -1,4 +1,4 @@
-import { TbBookmarks } from 'react-icons/tb'
+import { FaBookmark } from 'react-icons/fa'
 import React from 'react'
 import Link from 'next/link'
 
@@ -6,7 +6,7 @@ const BookmarkIcon = (props) => {
     const LinkComponent = React.forwardRef(function bookmarkIcon({ onClick, href }, ref) {
         return (
         <a href={href} onClick={onClick} ref={ref} className="flex sm:px-2 lg:px-0">
-        <TbBookmarks fill={props.iconColor} className="mr-2 md:mr-0 my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Bookmarks</p>
+        <FaBookmark stroke={props.iconColor} className="mr-2 md:mr-0 my-auto"/> <p className='hover:text-pink px-2 hidden md:block'>Bookmarks</p>
         </a>
     )
     })

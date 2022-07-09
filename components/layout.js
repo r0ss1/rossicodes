@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const router = useRouter();
 
   return (
-    <div className="flex h-screen flex-col items-center">
+    <div className="flex flex-col items-center">
         <Navbar />      
             <motion.main
                 key={router.route}

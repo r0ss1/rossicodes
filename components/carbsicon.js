@@ -7,7 +7,7 @@ const CarbsIcon = (props) => {
 
     return (
   
-        <GiDonut size={28} className="mr-0" fill={props.theme == 'dark' ? '#0e1111' : '#e3e4e6'}/>
+        <GiDonut size={28} className="mr-0" fill={props.iconColor}/>
 
     )
 }

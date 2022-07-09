@@ -7,7 +7,7 @@ const MapIcon = (props) => {
 
     return (
   
-        <FaMapMarkedAlt size={28} fill={props.theme == 'dark' ? '#0e1111' : '#e3e4e6'} className="mr-0"/>
+        <FaMapMarkedAlt size={28} fill={props.iconColor} className="mr-0"/>
 
     )
 }
