@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .border-gradient-br-green-blue-purple {
   background: linear-gradient(to right, #18181B, #30B8E1),
     linear-gradient(to bottom right, #60A5FA, #4ADE80);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
+.border-gradient-br-fuchsia {
+  background: linear-gradient(to right, rgb(244 63 94), rgb(192 38 211)),
+    linear-gradient(to bottom right, rgb(232 121 249), rgb(192 38 211));
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
+.border-gradient-br-rose {
+  background: linear-gradient(to right, rgb(232 121 249), rgb(253 164 175)),
+    linear-gradient(to bottom right, rgb(244 63 94), rgb(253 164 175));
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
 }

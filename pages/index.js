@@ -10,7 +10,8 @@ import Link from 'next/link'
 
 export default function Home() {
   const { systemTheme, theme, setTheme } = useTheme()
-  const iconColor = theme == 'dark' ? '#e3e4e6' : '#03FDD2'
+  const iconColor = '#f9f9f9'
+  const borderColor = 'overflow-hidden rounded-full border-gradient-br-fuchsia gradient-border-10'
 
   const renderThemeChanger = () => {
     const currentTheme = theme == 'system' ? 'systemTheme' : theme
@@ -25,15 +26,16 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-12 pb-44 pt-6 md:flex-row-reverse md:gap-6 md:pt-20">
-      <div className="group relative flex h-40 w-40 items-center justify-center md:h-52 md:w-52 md:flex-1">
-        <div className='overflow-hidden rounded-full border-gradient-br-green-blue-purple gradient-border-10'>
+    <div className="h-screen flex flex-col items-center gap-12 pb-44 pt-6 md:flex-row-reverse md:gap-6 md:pt-20">
+      <div className="group relative flex items-center justify-center md:flex-1">
+        <div className='overflow-hidden basis-[100%] min-w-full rounded-full border-gradient-br-fuchsia gradient-border-10'>
           <Image
-            src="/rossi.jpg"
+            src="/avatar.png"
             alt="Rossicodes"
-            width={250}
-            height={250}
-            className="rounded"
+            width={400}
+            height={400}
+            layout="responsive"
+            className="rounded-full"
           />
           </div>
       </div>
@@ -44,7 +46,7 @@ export default function Home() {
         </h1>
         <p className="text-center font-bold leading-7 md:text-left">A self taught developer from York, England. I love building things that help people reach their goals.</p>
         <div className="flex flex-col items-center gap-4 md:items-start">
-          <p className="text-center font-bold leading-7 md:text-left">I use <Link href="https://www.javascript.com/"><a><span className="underline hover:decoration-blue decoration-green decoration-2 underline-offset-2">Javascript</span></a></Link>, <Link href="https://nextjs.org/"><a><span className="underline hover:decoration-blue decoration-green decoration-2 underline-offset-2">Next.js</span></a></Link> and <Link href="https://tailwindcss.com/"><a><span className="underline hover:decoration-blue decoration-green decoration-2 underline-offset-2">Tailwind</span></a></Link> to bring my ideas to life.</p>
+          <p className="text-center font-bold leading-7 md:text-left">I use <Link href="https://www.javascript.com/"><a><span className="underline hover:decoration-blue decoration-fuchsia-500 decoration-2 underline-offset-2">Javascript</span></a></Link>, <Link href="https://nextjs.org/"><a><span className="underline hover:decoration-blue decoration-fuchsia-500 decoration-2 underline-offset-2">Next.js</span></a></Link> and <Link href="https://tailwindcss.com/"><a><span className="underline hover:decoration-blue decoration-fuchsia-500 decoration-2 underline-offset-2">Tailwind</span></a></Link> to bring my ideas to life</p>
           <div className="flex gap-4">
             <div className='w-8 h-8 rounded-lg overflow-hidden'>
             <Link href="https://www.javascript.com/">

@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 
 function Footer() {
     const { theme, setTheme } = useTheme()
-    const iconColor = theme == 'dark' ? '#e3e4e6' : '#f000ff'
+    const iconColor = theme == 'dark' ? '#e3e4e6' : '#e3e4e6'
     const itemClass = `h-6 w-6 fill-${iconColor} hover:fill-pink" aria-hidden="true`
 
     const navigation = {

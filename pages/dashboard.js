@@ -130,7 +130,7 @@ export default function Dashboard(props) {
       </div>
         <div className="flex flex-wrap">  
         <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Fat</h5>
@@ -138,35 +138,35 @@ export default function Dashboard(props) {
                 <div className="relative w-auto pl-4 flex-initial"><div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><FatIcon iconColor={iconColor} theme={theme} /></div>
                 </div>
               </div>
-                <p className="text-sm mt-4"><span className="text-fuchsia-600">3.48% </span><span className="whitespace-nowrap"> / 142g limit</span></p>
+                <p className="text-sm mt-4"><span className="text-rose-500">3.48% </span><span className="whitespace-nowrap"> / 142g limit</span></p>
               </div>
             </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Carbs</h5><span className="font-semibold text-xl">{carbs ? carbs : 0}</span> g</div>
                 <div className="relative w-auto pl-4 flex-initial">
                     <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><CarbsIcon iconColor={iconColor} theme={theme} /></div>
                 </div>
-              </div><p className="text-sm mt-4"><span className="text-fuchsia-600">3.48% </span><span className="whitespace-nowrap"> / 27g limit</span></p></div>
+              </div><p className="text-sm mt-4"><span className="text-rose-500">3.48% </span><span className="whitespace-nowrap"> / 27g limit</span></p></div>
               </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Protein</h5><span className="font-semibold text-xl">{protein ? protein : 0}</span> g</div>
               <div className="relative w-auto pl-4 flex-initial">
                     <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><ProteinIcon iconColor={iconColor} theme={theme} /></div>
               </div>
-              </div><p className="text-sm mt-4"><span className="text-fuchsia-600">3.48% </span><span className="whitespace-nowrap"> / 128g target</span></p></div>
+              </div><p className="text-sm mt-4"><span className="text-rose-500">3.48% </span><span className="whitespace-nowrap"> / 128g target</span></p></div>
               </div>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-sm"><span className='text-fuchsia-800'>{kcals}</span> / 1800 kcals</p> 
+            <p className="mb-2 text-sm"><span className='dark:text-rose-500 text-fuchsia-800'>{kcals}</span> / 1800 kcals</p> 
           <div className="m-auto w-full bg-gray h-1">
               <div className={ kCalclass }></div>
             </div>
@@ -188,18 +188,18 @@ export default function Dashboard(props) {
       </div>  
         <div className="flex flex-wrap">
           <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Steps</h5><span className="font-semibold text-xl">{steps ? steps : 0}</span></div>
                 <div className="relative w-auto pl-4 flex-initial">
                     <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><FootstepsIcon iconColor={iconColor} theme={theme} /></div>
                   </div>
-              </div><p className="text-sm mt-4"><span className="text-fuchsia-600">3.48% </span><span className="whitespace-nowrap">/ 10000 target</span></p></div>
+              </div><p className="text-sm mt-4"><span className="text-rose-500">3.48% </span><span className="whitespace-nowrap">/ 10000 target</span></p></div>
               </div>
             </div>
           <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words bg-grey-50 rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4"><div className="flex flex-wrap">
                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
                   <h5 className="uppercase font-bold text-xs">Workout</h5>
@@ -207,12 +207,12 @@ export default function Dashboard(props) {
                 <div className="relative w-auto pl-4 flex-initial">
                 <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><GymIcon iconColor={iconColor} theme={theme}/></div>
                 </div></div><p className="text-sm mt-4">
-                  <span className="text-fuchsia-600 mr-2"><i className="fas fa-arrow-up"></i> 12%</span>
+                  <span className="text-rose-500 mr-2"><i className="fas fa-arrow-up"></i> 12%</span>
                   <span className="whitespace-nowrap">3x per wk</span></p></div>
             </div>
             </div>
             <div className="w-full lg:w-4/12 xl:w-4/12 p-4">
-            <div className="dark:bg-pinkcity bg-gradient-to-t from-rose-300 to-rose-400 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0 shadow-lg">
+            <div className="bg-gradient-to-t from-fuchsia-800 to-fuchsia-900 relative flex flex-col min-w-0 break-words rounded mb-6 xl:mb-0 shadow-lg">
               <div className="flex-auto p-4">
                 <div className="flex flex-wrap">
                   <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -220,12 +220,12 @@ export default function Dashboard(props) {
                     <span className="font-semibold text-xl">{distance ? distance : 0} mi</span></div>
                   <div className="relative w-auto pl-4 flex-initial">
                       <div className="p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full dark:bg-gray bg-white"><MapIcon iconColor={iconColor} theme={theme} /></div>
-                    </div></div><p className="text-sm mt-4"><span className="text-fuchsia-600 mr-2"><i className="fas fa-arrow-down"></i> 1.10%</span><span className="whitespace-nowrap">/ 6 mi</span></p></div>
+                    </div></div><p className="text-sm mt-4"><span className="text-rose-500 mr-2"><i className="fas fa-arrow-down"></i> 1.10%</span><span className="whitespace-nowrap">/ 6 mi</span></p></div>
               </div>
             </div>
           </div>
           <div>
-            <p className="mb-2 text-sm"><span className='text-fuchsia-800'>{fitnessGoals}</span> / 2 fitness goals</p> 
+            <p className="mb-2 text-sm"><span className='dark:text-rose-500 text-fuchsia-800'>{fitnessGoals}</span> / 2 fitness goals</p> 
           <div className="m-auto w-full bg-gray h-1">
             <div className={ fitnessClass }></div>
             </div>

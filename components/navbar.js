@@ -35,10 +35,10 @@ function Navbar() {
 
   return (
     <div className="w-11/12 md:gap-4 my-6 px-6 sm:px-12 py-6 flex flex-col md:flex-row items-center">
-      <div className="invisible md:visible flex-shrink-0 border-gradient-br-green-blue-purple gradient-border-3 hover:border-pink overflow-hidden rounded-full flex items-center">
+      <div className="invisible md:visible flex-shrink-0 border-gradient-br-fuchsia gradient-border-3 hover:border-pink overflow-hidden rounded-full flex items-center">
       <Link href='/'>
           <Image
-              src='/rossi.jpg' 
+              src='/avatar.png' 
               alt="Rossi"
               width={50}
               height={50}
