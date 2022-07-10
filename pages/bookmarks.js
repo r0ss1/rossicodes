@@ -3,7 +3,7 @@
 export default function Bookmarks() {
 
   return (
-    <div className="flex flex-col px-8 md:px-2 gap-12 pb-44 pt-6 md:gap-6 md:pt-20">
+    <div className="flex h-screen flex-col px-8 md:px-2 gap-12 pb-44 pt-6 md:gap-6 md:pt-20">
       <div>
       <h1 className="text-4xl font-extrabold">
         Bookmarks
